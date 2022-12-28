@@ -2,8 +2,12 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+import { ContentPage } from '../components/ContentPage';
+import { withIdentity } from '../components/Authenticator'
 
 const Home: NextPage = () => {
+
+    
   return (
     
     <div className='bg-slate-100'>
@@ -46,17 +50,9 @@ const Home: NextPage = () => {
             </label>
             <textarea className="textarea textarea-accent" placeholder="Description"></textarea>
         </div>
-        <div className="form-control w-full max-w-xs">
-  <label className="label">
-    <span className="label-text text-lg">Pick a file</span>
-    <span className="label-text-alt">Alt label</span>
-  </label>
-  <input type="file" className="file-input file-input-bordered w-full max-w-xs" />
-  <label className="label">
-    <span className="label-text-alt">Alt label</span>
-    <span className="label-text-alt">Alt label</span>
-  </label>
-</div>
+
+        <ContentPage/>
+
 <div className="form-control">
           <label className="label">
             <span className="label-text text-lg">Alumnus #1</span>
@@ -129,4 +125,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default withIdentity(Home);

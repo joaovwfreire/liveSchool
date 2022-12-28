@@ -1,5 +1,6 @@
 import '../styles/globals.css';
 import '@rainbow-me/rainbowkit/styles.css';
+import React, { useEffect } from 'react'
 import type { AppProps } from 'next/app';
 import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { configureChains, createClient, WagmiConfig } from 'wagmi';
@@ -12,6 +13,8 @@ import {
   studioProvider,
 } from '@livepeer/react';
 import Navbar from '../components/Navbar';
+import { KeyringProvider, useKeyring } from '@w3ui/react-keyring'
+import { UploaderProvider } from '@w3ui/react-uploader'
 require ('dotenv').config ()
 
 const livepeerClient = createReactClient({
@@ -51,9 +54,19 @@ const wagmiClient = createClient({
   webSocketProvider,
 });
 
+function AgentLoader ({ children }) {
+  const [, { loadAgent }] = useKeyring()
+  // eslint-disable-next-line
+  useEffect(() => { loadAgent() }, []) // load agent - once.
+  return children
+}
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <LivepeerConfig client={livepeerClient}>
+      <KeyringProvider>
+      <UploaderProvider>
+        <AgentLoader>
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
       <html data-theme="corporate">
@@ -63,6 +76,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         </html>
       </RainbowKitProvider>
     </WagmiConfig>
+    </AgentLoader>
+      </UploaderProvider>
+    </KeyringProvider>
     </LivepeerConfig>
   );
 }
