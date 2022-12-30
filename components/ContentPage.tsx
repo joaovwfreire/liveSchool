@@ -36,7 +36,7 @@ export function ContentPage () {
     return (
       <form onSubmit={handleUploadSubmit}>
         <div className='db mb3'>
-        <label className="label"><span className="label-text text-lg">Pick a file for alumni identifying NFT</span>
+        <label className="label"><span className="label-text text-lg">Pick a file for alumni NFT</span>
         </label>
           <input id='file' className='db pa2 w-100 ba br2 file-input file-input-bordered w-full max-w-xs' type='file' onChange={e => setFile(e.target.files[0])} required />
         </div>

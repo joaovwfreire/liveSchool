@@ -15,7 +15,12 @@ import {
 import Navbar from '../components/Navbar';
 import { KeyringProvider, useKeyring } from '@w3ui/react-keyring'
 import { UploaderProvider } from '@w3ui/react-uploader'
-require ('dotenv').config ()
+import { UUIDContext } from '../context'
+import { useRouter } from 'next/router'
+import { v4 as uuid } from 'uuid';
+require ('dotenv').config()
+
+const id = uuid()
 
 const livepeerClient = createReactClient({
   provider: studioProvider({
@@ -36,14 +41,14 @@ const { chains, provider, webSocketProvider } = configureChains(
     alchemyProvider({
       // This is Alchemy's default API key.
       // You can get your own at https://dashboard.alchemyapi.io
-      apiKey: '_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC',
+      apiKey: process.env.ALCHEMY_API_KEY as string,
     }),
     publicProvider(),
   ]
 );
 
 const { connectors } = getDefaultWallets({
-  appName: 'RainbowKit App',
+  appName: 'liveSchool',
   chains,
 });
 
@@ -62,6 +67,10 @@ function AgentLoader ({ children }) {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  function navigate() {
+    router.push(`/protected?id=${id}`)
+  }
   return (
     <LivepeerConfig client={livepeerClient}>
       <KeyringProvider>
@@ -71,8 +80,15 @@ function MyApp({ Component, pageProps }: AppProps) {
       <RainbowKitProvider chains={chains}>
       <html data-theme="corporate">
         <Navbar/>
+        <a onClick={navigate} style={{ cursor: 'pointer' }}>
+          Protected
+        </a>
         <hr/>
+        <UUIDContext.Provider value={{
+        id
+      }}>
         <Component {...pageProps}/>
+        </UUIDContext.Provider>
         </html>
       </RainbowKitProvider>
     </WagmiConfig>
