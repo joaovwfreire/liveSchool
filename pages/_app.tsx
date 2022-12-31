@@ -80,9 +80,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <RainbowKitProvider chains={chains}>
       <html data-theme="corporate">
         <Navbar/>
-        <a onClick={navigate} style={{ cursor: 'pointer' }}>
-          Protected
-        </a>
+
         <hr/>
         <UUIDContext.Provider value={{
         id

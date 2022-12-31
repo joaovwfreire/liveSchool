@@ -48,11 +48,12 @@ const Home: NextPage = () => {
         accessControlConditions, chain: 'polygon', authSig, resourceId: resourceId
       })
       Cookies.set('lit-auth', jwt, { expires: 1 })
+      setConnected(true)
 
     } catch (err) {
       console.log('error: ', err)
     }
-    setConnected(true)
+
 
   }
 
@@ -67,6 +68,9 @@ const Home: NextPage = () => {
       <h1>Page Access</h1>
       {
         !connected && <button onClick={connect}>Connect</button>
+      }
+      {
+        connected && <div>Welcome in!</div>
       }
 
       <footer className={styles.footer}>

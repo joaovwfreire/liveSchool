@@ -84,6 +84,10 @@ const Home: NextPage = () => {
         setStatus('done')
       }
     }
+
+const createCourse = async () => {
+
+}
   
     
 
@@ -182,8 +186,6 @@ const Home: NextPage = () => {
     <h3 className="text-lg font-bold">Review course creation.</h3>
     <p className="py-4 mb-1">Please check the details before ordering course placement!</p>
     <p><p className='font-bold'>Course Name:</p>   {courseName}</p>
-    <p><p className='font-bold'>Start Date:</p></p>
-    <p><p className='font-bold'>End Date:</p></p>
     <p><p className='font-bold'>Description:</p> {courseDescription}</p>
     <p><p className='font-bold'>Teacher:</p> {teacher}</p>
     <p><p className='font-bold'>Amount to mint:</p> {amount}</p>
@@ -195,7 +197,7 @@ const Home: NextPage = () => {
   <p className="text-bold">I have reviewd my order</p>
     <input type="checkbox"  className="checkbox  mr-10" />
   </label>
-  <button className='btn place-self-end mx-3'>Agree and create course</button>
+  <button className='btn place-self-end mx-3' onClick={createCourse}>Agree and create course</button>
 </div>
     
 
