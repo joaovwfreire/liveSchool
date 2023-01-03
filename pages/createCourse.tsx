@@ -7,6 +7,9 @@ import styles from '../styles/Home.module.css';
 import { ContentPage } from '../components/ContentPage';
 import { withIdentity } from '../components/Authenticator'
 import { useUploader } from '@w3ui/react-uploader'
+import axios from 'axios'
+
+import toast from 'react-hot-toast';
 
 
 const Home: NextPage = () => {
@@ -34,12 +37,12 @@ const Home: NextPage = () => {
     setAmount(e.target.value)
   };
 
-  const Uploading = ({ file, storedDAGShards }) => (
+  const Uploading = ({ file, storedDAGShards }: any) => (
     <div className='flex items-center'>
       <div className='spinner mr3 flex-none' />
       <div className='flex-auto'> 
         <p className='truncate'>Uploading DAG for {file.name}</p>
-        {storedDAGShards.map(({ cid, size }) => (
+        {storedDAGShards.map(({ cid, size }: any ) => (
           <p key={cid.toString()} className='f7 truncate'>
             {cid.toString()} ({size} bytes)
           </p>
@@ -48,20 +51,20 @@ const Home: NextPage = () => {
     </div>
   )
   
-  const Errored = ({ error }) => (
+  const Errored = ({ error }: any) => (
     <div>
       <h1 className='near-white'>⚠️ Error: failed to upload file: {error.message}</h1>
       <p>Check the browser console for details.</p>
     </div>
   )
   
-  const Done = ({ file, dataCid, storedDAGShards }) => (
+  const Done = ({ file, dataCid, storedDAGShards }: any) => (
     <div>
       <h1 className='near-white'>Done!</h1>
       <p className='f6 code truncate'>{dataCid.toString()}</p>
       <p><a href={`https://w3s.link/ipfs/${dataCid}`} className='blue' target='blank'>View {file.name} on IPFS Gateway.</a></p>
       <p className='near-white'>Chunks ({storedDAGShards.length}):</p>
-      {storedDAGShards.map(({ cid, size }) => (
+      {storedDAGShards.map(({ cid, size }: any) => (
         <p key={cid.toString()} className='f7 truncate'>
           {cid.toString()} ({size} bytes)
         </p>
@@ -71,7 +74,7 @@ const Home: NextPage = () => {
 
   if (!uploader) return null
   
-    const handleUploadSubmit = async e => {
+    const handleUploadSubmit = async(e: any) => {
       e.preventDefault()
       try {
         setStatus('uploading')
@@ -86,7 +89,26 @@ const Home: NextPage = () => {
     }
 
 const createCourse = async () => {
+  toast.loading("Attempting to create a new course.")
+  await axios({
+    method: 'post',
+    url: '/api/createCourse',
+    data: {
+      course: courseName,
+      description: courseDescription,
+      amount: amount,
+      teacher_wallet: teacher,
+      url: `https://${dataCid}.ipfs.w3s.link/`
+    }
+   }).then((response: any)=>{
+    console.log(response)
+    toast.success(`Course succesfully created! You may now distribute the access passes to your students from the Control Panel.`)
+    
 
+  }).catch((e: any) =>{
+    console.log(e)
+    toast.error(e)
+  })
 }
   
     
@@ -173,7 +195,7 @@ const createCourse = async () => {
     }
       
         <div className="form-control mt-6">
-          <label htmlFor="my-modal-3" className="btn ">Proceed to order review  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+          <label htmlFor="my-modal-3" className="btn ">Proceed to order review  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
 </svg></label>
         </div>
@@ -190,13 +212,10 @@ const createCourse = async () => {
     <p><p className='font-bold'>Teacher:</p> {teacher}</p>
     <p><p className='font-bold'>Amount to mint:</p> {amount}</p>
     { dataCid != null &&
-    <a href={`https://w3s.link/ipfs/${dataCid}`} target='blank'><p className='font-bold'>Alumni badge:</p> {`https://w3s.link/ipfs/${dataCid}`}</a>}
+    <a href={`ipfs://${dataCid}`} target='blank'><p className='font-bold'>Alumni badge:</p> {`https://w3s.link/ipfs/${dataCid}`}</a>}
     
     <div className="form-control mt-5">
-  <label className=" label">  
-  <p className="text-bold">I have reviewd my order</p>
-    <input type="checkbox"  className="checkbox  mr-10" />
-  </label>
+
   <button className='btn place-self-end mx-3' onClick={createCourse}>Agree and create course</button>
 </div>
     
@@ -205,11 +224,6 @@ const createCourse = async () => {
 </div>
       </main>
 
-      <footer className={styles.footer}>
-        <a href="https://rainbow.me" target="_blank" rel="noopener noreferrer">
-          Made with ❤️ by your frens at 🌈
-        </a>
-      </footer>
     </div>
   );
 };

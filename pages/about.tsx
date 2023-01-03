@@ -2,60 +2,16 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import LitJsSdk from 'lit-js-sdk'
+import LitJsSdk from 'lit-js-sdk';
 import Cookies from 'js-cookie'
 import { UUIDContext } from '../context'
 import { useContext, useState } from 'react';
-import Image from 'next/image';
 
-const accessControlConditions = [
-  {
-    contractAddress: '0xdbc7cb706faef5e4c32d3ee14ed45a0c5573a93a',
-    standardContractType: 'ERC1155',
-    chain: "polygon",
-    method: 'balanceOf',
-    parameters: [   
-      ':userAddress',
-      '4'
-    ],
-    returnValueTest: {
-      comparator: '>',
-      value: '0'
-    }
-  }
-]
+
+
 
 const Home: NextPage = () => {
-  const [connected, setConnected] = useState()
-  const { id } = useContext(UUIDContext)
-
-  async function connect() {
-    const resourceId = {
-      baseUrl: 'http://localhost:3000',
-      path: '/protected',
-      orgId: "",
-      role: "",
-      extraData: id
-    }
-
-    const client = new LitJsSdk.LitNodeClient({ alertWhenUnauthorized: false })
-    await client.connect()
-    const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain: 'polygon' })
-
-    await client.saveSigningCondition({ accessControlConditions, chain: 'polygon', authSig, resourceId })
-    try {
-      const jwt = await client.getSignedToken({
-        accessControlConditions, chain: 'polygon', authSig, resourceId: resourceId
-      })
-      Cookies.set('lit-auth', jwt, { expires: 1 })
-      setConnected(true)
-
-    } catch (err) {
-      console.log('error: ', err)
-    }
-
-
-  }
+  
 
   return (
     <div className={styles.container}>
@@ -65,26 +21,42 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1>Page Access</h1>
-      {
-        !connected && <button onClick={connect}>Connect</button>
-      }
-      {
-        connected && <div>Welcome in!</div>
-      }
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+      <main className={styles.main}>
+      <div className='box'>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div className='box2'>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+<div className="card flex-shrink-0 w-full max-w-3xl shadow-2xl bg-base-100">
+      <div className="card-body">
+        <div className='card-title'>About</div>
+        <p>liveSchool is a dApp built for Encode's Next Video Build hackathon.</p>
+        <p>It enables content creators to easily set up gated-access to their live streams and uploaded videos. </p>
+        <h3 className='font-bold'>Lit Access Control</h3>
+        <p>By using Lit Access control, the most relevant data - video files and stream links access is selective. Only users that own an nft minted by
+          the content creator can view the content. </p>
+        <h3 className='font-bold'>LivePeer</h3>
+        <p>Lorem ipsum</p>
+        <h3 className='font-bold'>NFT Port</h3>
+        <p>Lorem ipsum</p>
+        <h3 className='font-bold'>W3 Storage</h3>
+        <p>Lorem ipsum</p>
+        <h3 className='font-bold'>XMTP</h3>
+        <p>Lorem ipsum</p>
+        <h3 className='font-bold'>Why Polygon?</h3>
+        <p>Lorem ipsum</p>
+    </div>
+    </div>
+    </main>
     </div>
   )
 };

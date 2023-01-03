@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useKeyring } from '@w3ui/react-keyring'
 import styles from '../styles/Home.module.css';
 
-export default function Authenticator ({ children }) {
+export default function Authenticator ({ children }: any) {
   const [{ space }, { createSpace, registerSpace, cancelRegisterSpace }] = useKeyring()
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
@@ -45,7 +45,7 @@ export default function Authenticator ({ children }) {
     )
   }
 
-  const handleRegisterSubmit = async e => {
+  const handleRegisterSubmit = async (e:any) => {
     e.preventDefault()
     setSubmitted(true)
     console.log(2)
@@ -89,7 +89,7 @@ export default function Authenticator ({ children }) {
         </div>
         <div className="form-control mt-6">
           <label htmlFor="my-modal-3" className="btn" onClick={handleRegisterSubmit}>Proceed to course Creation  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+<path fillRule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
 </svg></label>
         </div>
       </div>
@@ -101,8 +101,8 @@ export default function Authenticator ({ children }) {
 /**
  * Wrapping a component with this HoC ensures an identity exists.
  */
-export function withIdentity (Component) {
-  return props => (
+export function withIdentity (Component: any) {
+  return (props: any) => (
     <Authenticator>
       <Component {...props} />
     </Authenticator>

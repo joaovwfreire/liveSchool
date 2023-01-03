@@ -18,6 +18,8 @@ import { UploaderProvider } from '@w3ui/react-uploader'
 import { UUIDContext } from '../context'
 import { useRouter } from 'next/router'
 import { v4 as uuid } from 'uuid';
+import toast, { Toaster } from 'react-hot-toast';
+import Footer from '../components/Footer';
 require ('dotenv').config()
 
 const id = uuid()
@@ -59,7 +61,7 @@ const wagmiClient = createClient({
   webSocketProvider,
 });
 
-function AgentLoader ({ children }) {
+function AgentLoader ({ children }: any) {
   const [, { loadAgent }] = useKeyring()
   // eslint-disable-next-line
   useEffect(() => { loadAgent() }, []) // load agent - once.
@@ -85,7 +87,33 @@ function MyApp({ Component, pageProps }: AppProps) {
         <UUIDContext.Provider value={{
         id
       }}>
+        <Toaster
+  position="top-right"
+  reverseOrder={false}
+  gutter={8}
+  containerClassName=""
+  containerStyle={{}}
+  toastOptions={{
+    // Define default options
+    className: '',
+    duration: 5000,
+    style: {
+      background: '#363636',
+      color: '#fff',
+    },
+
+    // Default options for specific types
+    success: {
+      duration: 3000,
+      theme: {
+        primary: 'green',
+        secondary: 'black',
+      },
+    },
+  }}
+/>
         <Component {...pageProps}/>
+        <Footer/>
         </UUIDContext.Provider>
         </html>
       </RainbowKitProvider>

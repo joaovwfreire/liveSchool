@@ -70,7 +70,7 @@ const Upload: NextPage = () => {
 
   if (!uploader) return null
   
-    const handleUploadSubmit = async e => {
+    const handleUploadSubmit = async(e: any) => {
       e.preventDefault()
       try {
         setStatus('uploading')
