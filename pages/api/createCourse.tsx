@@ -19,7 +19,7 @@ export default async function handler(
   const upsertDatabase = async () => {
     const client = await clientPromise;
     const db = client.db("liveschool");
-      console.log(12312)
+      
     const upsertAction = await db
         .collection("courses")
         .updateOne(
@@ -31,10 +31,10 @@ export default async function handler(
             );
   }
 
-  console.log(12313132)
+  
 
   if (req.method === "POST" && course && description && amount && teacher && url && nextTokenId) {
-    console.log(144442)
+    
     try {
       
       const optionsForUriGen = {
@@ -51,7 +51,7 @@ export default async function handler(
         .then(response => response.json())
         .then(response => uri = response.metadata_uri)
         .catch(err => console.error(err));
-       console.log(1)
+      
         const options = {
             method: 'POST',
             headers: {
@@ -72,7 +72,7 @@ export default async function handler(
               contract_address: process.env.ERC_1155_CONTRACT_ADDRESS
             })
           };
-          console.log(2)
+          
           await fetch('https://api.nftport.xyz/v0/mints/customizable/batch', options)
             .then(response => { 
                 upsertDatabase();
@@ -81,7 +81,7 @@ export default async function handler(
             })
             .catch(err => res.status(400).json(err));
             
-        console.log(3 )
+        
         res.status(200).json("Course creation succesfull! " + nextTokenId + " corresponds to this course's NFT id and can be seen at OpenSea." )
     } catch (e) {
 

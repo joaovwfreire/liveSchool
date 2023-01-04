@@ -48,13 +48,13 @@ export default function Authenticator ({ children }: any) {
   const handleRegisterSubmit = async (e:any) => {
     e.preventDefault()
     setSubmitted(true)
-    console.log(2)
+    
     try {
       await createSpace()
-      console.log(1)
+      
       await registerSpace(email)
     } catch (err) {
-        console.log(err)
+        
       throw new Error('failed to register', { cause: err })
     } finally {
       setSubmitted(false)

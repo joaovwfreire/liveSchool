@@ -4,13 +4,19 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import clientPromise from "../../server/mongo/middleware/mongodb";
 import abi from '../../abi/token.json';
 
+interface Metadata {
+    name: string;
+    description: string;
+    image: string;
+  }
 
-const getBalances = async(address: String, ids: [Number]) =>{
+const getBalances = async(address: String, ids: [Number], metadataArray: [Metadata]) =>{
 
     const provider = new ethers.providers.AlchemyProvider('matic', process.env.ALCHEMY_API_KEY);  
     const tokenContract = new ethers.Contract(process.env.ERC_1155_CONTRACT_ADDRESS as string, abi, provider);  
-    type IdAndAmount = {
+    type ResponseType = {
         id: any;
+        metadata?: Metadata;
         amount: any;
     }
     let response: any[] = [] ;
@@ -21,13 +27,14 @@ const getBalances = async(address: String, ids: [Number]) =>{
     
         
     });
-    console.log(2)
-    const batchBalances = await tokenContract.balanceOfBatch(addressArray, ids);
    
+    const batchBalances = await tokenContract.balanceOfBatch(addressArray, ids);
+    
     ids.forEach((x, i) =>{
         
-        let amountForId: IdAndAmount = {
+        let amountForId: ResponseType = {
             id: x,
+            metadata: metadataArray[i],
             amount: batchBalances[i]
         }
         response.push(amountForId)
@@ -48,6 +55,7 @@ export default async function handler(
     
     if (req.method === "GET") {
         let idsArray: any = [];
+        let metadataArray: any = [];
     try {
            
         const options = {
@@ -61,16 +69,18 @@ export default async function handler(
         await fetch(`https://api.nftport.xyz/v0/nfts/${process.env.ERC_1155_CONTRACT_ADDRESS}?chain=polygon&page_number=${i}&page_size=50&include=metadata&refresh_metadata=false`, options)
             .then(response => response.json())
             .then(response => 
+               
                 response.nfts.map((x: any) => {
                     
                     idsArray.push(parseInt(x.token_id));
-                    
+                    metadataArray.push(x.metadata);
                 })
+                
             )
             .catch(err => console.error(err));
         }
         
-           const batch = await getBalances(userWallet, idsArray);
+           const batch = await getBalances(userWallet, idsArray, metadataArray);
 
             res.status(200).json(batch)
             

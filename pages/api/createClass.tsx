@@ -20,7 +20,7 @@ export default async function handler(
     const findCourse = await db
         .collection('courses')
         .findOne({name: course,  teacher: teacher})
-    console.log(findCourse)
+   
     if (findCourse == null){
         return ('Course not found');
     }
@@ -33,7 +33,7 @@ export default async function handler(
             },
             { upsert: true }
             );
-    console.log(upsertAction)        
+        
     return ('Class created');
   }
 
@@ -42,7 +42,7 @@ export default async function handler(
     try {
 
         const response = await upsertDatabase();
-        console.log(response)
+       
         res.status(200).json(response);
     } catch (e) {
 

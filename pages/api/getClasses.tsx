@@ -11,10 +11,9 @@ export default async function handler(
 ) {
     const course = req.query.course;
     if (req.method === "GET") {
-    console.log({course})
     try {
         const response = await getResponse(course as string || course as undefined);
-        console.log({response})
+        
         res.status(200).json(response) 
     } catch (e) {
     

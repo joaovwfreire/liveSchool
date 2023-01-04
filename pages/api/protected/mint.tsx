@@ -19,14 +19,13 @@ deploying an event listener to update the stored maxId value whenever a mint eve
 const figureTokenId = async () =>{
     const tokenContract = new ethers.Contract(process.env.ERC_1155_CONTRACT_ADDRESS as string, abi, provider);
 
-    console.log(await tokenContract.uri(0))
+    
     let found = false;
     let itr = 0;
     while(!found){
-        console.log(itr)
+        
         let itrUri = await tokenContract.uri(itr);
-        const a = await itrUri.wait();
-        console.log({a})
+        
         if(!itrUri){
             let totalSupply = await tokenContract.totalSupply(itr);
             if (totalSupply == 0){
@@ -52,7 +51,7 @@ export default async function handler(
     // DO NOT FORGET THIS
     
     try {
-        console.log(`1`)
+        
         const options = {
             method: 'POST',
             headers: {
@@ -73,12 +72,11 @@ export default async function handler(
               contract_address: process.env.ERC_1155_CONTRACT_ADDRESS
             })
           };
-          console.log(2)
+          
           await fetch('https://api.nftport.xyz/v0/mints/customizable/batch', options)
             .then(response => res.status(200).json({response, id: nextTokenId}))
-            .then(response => console.log(response))
             .catch(err => console.error(err));
-            console.log(3)
+            
         
     } catch (e) {
 

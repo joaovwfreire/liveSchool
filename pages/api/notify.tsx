@@ -26,7 +26,7 @@ const conversation2 = await xmtp.conversations.newConversation(
   )
   await conversation2.send('A new class for course Olefe oeflefp has been uploaded')
       await conversation2.send('https://bafybeifikiketkrth2ls5lh6cqtsl7r2rlywbm7qo3lboi2oaaqttvt3kq.ipfs.w3s.link/gas-mask-7105073-5752497.mp4')
-      console.log(conversation2.context?.metadata.title)
+      
 
   
 }
