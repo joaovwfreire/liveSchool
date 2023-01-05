@@ -2,12 +2,18 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import Upload from './upload';
+import ControlPanelCourse from '../components/ControlPanelCourse';  
+import { useAccount } from 'wagmi';
 
-const Home: NextPage = () => {
+const Home: NextPage = ({response} :any) => {
+  const { address } = useAccount({
+    onConnect({ address, isReconnected }) {
+      
+    },
+  });
   return (
     
-    <div className='bg-slate-100'>
+    <div className='bg-slate-100' >
       <Head>
         <title>RainbowKit App</title>
         <meta
@@ -41,142 +47,32 @@ const Home: NextPage = () => {
 
 
 </div>
-<div className="overflow-x-auto w-5/6 mt-5 place-content-center place-items-center">
+
+<div className="overflow-x-auto w-5/6  place-content-center place-items-center">
 <h1 className='text-4xl text-bold'>Control Panel</h1>
   <table className="table mt-5 w-full place-self-center">
    
     <thead >
       <tr >
         
-        <th className='bg-secondary'>Course Name</th>
-        <th className='bg-secondary'>Students</th>
-        <th className='bg-secondary'>Start Date</th>
-        <th className='bg-secondary'>End Date</th>
-        <th className='bg-secondary'></th>
+        <th className='bg-secondary '>Course Name</th>
+        <th className='bg-secondary'>NFT ID</th>
+        
+        <th className='bg-secondary'>Upload Content</th>
+        <th className='bg-secondary'>Live Stream</th>
+        <th className='bg-secondary'>Access Pass</th>
       </tr>
     </thead>
     <tbody>
-    
-      <tr>
-        
-        <td>
-          <div className="flex items-center space-x-3">
-            <div className="avatar">
-              <div className="mask mask-squircle w-12 h-12">
-                <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div className="font-bold">CS:50</div>
-              <div className="text-sm opacity-50"></div>
-            </div>
-          </div>
-        </td>
-        <td>
-          35
-          <br/>
-        </td>
-        <td>10/23/22 10:00 UTC</td>
-        <td>12/23/22 10:00 UTC</td>
-        <th>
-        <label htmlFor="my-modal-3" className="btn btn-accent btn-xs">details</label>
-        </th>
-      </tr>
-      <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-<div className="modal">
-  <div className="modal-box relative">
-    <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+{response.map((x: any) => {
+  if (x.teacher == address){
+  return(<ControlPanelCourse props={x}/>)
+  }
+})}
+</tbody>
+</table>
+</div>
 
-      <Upload/>
-    </div>
-</div>
-<tr>
-        
-        <td>
-          <div className="flex items-center space-x-3">
-            <div className="avatar">
-              <div className="mask mask-squircle w-12 h-12">
-                <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div className="font-bold">CS:50</div>
-              <div className="text-sm opacity-50"></div>
-            </div>
-          </div>
-        </td>
-        <td>
-          35
-          <br/>
-        </td>
-        <td>10/23/22 10:00 UTC</td>
-        <td>12/23/22 10:00 UTC</td>
-        <th>
-        <label htmlFor="my-modal-3" className="btn btn-accent btn-xs">details</label>
-        </th>
-      </tr>
-      
-      <tr>
-        
-        <td>
-          <div className="flex items-center space-x-3">
-            <div className="avatar">
-              <div className="mask mask-squircle w-12 h-12">
-                <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div className="font-bold">CS:50</div>
-              <div className="text-sm opacity-50"></div>
-            </div>
-          </div>
-        </td>
-        <td>
-          35
-          <br/>
-        </td>
-        <td>10/23/22 10:00 UTC</td>
-        <td>12/23/22 10:00 UTC</td>
-        <th>
-        <label htmlFor="my-modal-3" className="btn btn-accent btn-xs">details</label>
-        </th>
-      </tr>
-      
-      <tr>
-        
-        <td>
-          <div className="flex items-center space-x-3">
-            <div className="avatar">
-              <div className="mask mask-squircle w-12 h-12">
-                <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div className="font-bold">CS:50</div>
-              <div className="text-sm opacity-50"></div>
-            </div>
-          </div>
-        </td>
-        <td>
-          35
-          <br/>
-        </td>
-        <td>10/23/22 10:00 UTC</td>
-        <td>12/23/22 10:00 UTC</td>
-        <th>
-        <label htmlFor="my-modal-3" className="btn btn-accent btn-xs">details</label>
-        </th>
-      </tr>
-    </tbody>
-    <hr/>
-    <tfoot >
-   <hr/>
-   <hr/>
-    </tfoot>
-    
-  </table>
-  
-</div>
       </main>
 
 
@@ -185,3 +81,15 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+// Triggered on each request
+export async function getServerSideProps() {
+	// Fetching data from an API
+	const res = await fetch('http://localhost:3000/api/getCourses');
+    
+
+	const response = await res.json();
+  
+	// Pass the data to the page via props
+	return {props: {response}};
+}

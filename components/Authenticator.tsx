@@ -4,8 +4,8 @@ import styles from '../styles/Home.module.css';
 
 export default function Authenticator ({ children }: any) {
   const [{ space }, { createSpace, registerSpace, cancelRegisterSpace }] = useKeyring()
-  const [email, setEmail] = useState('')
-  const [submitted, setSubmitted] = useState(false)
+  const [email, setEmail] = useState<any>('')
+  const [submitted, setSubmitted] = useState<any>(false)
 
   if (space?.registered()) {
     return children

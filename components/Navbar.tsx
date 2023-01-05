@@ -3,7 +3,7 @@ import * as React from 'react';
 
 const Navbar = () => { 
     return(
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 absolute">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -14,8 +14,9 @@ const Navbar = () => {
       <li><a href='/dashboard' className='btn btn-accent my-1 '>Dashboard</a></li>
       <li><a href='/createCourse' className='btn btn-primary my-1 text-white'>Create Course</a></li>
       
-      <li><a href='about' className='btn btn-accent my-1 '>About</a></li>
-      <li><a href='controlpanel' className='btn btn-primary my-1 text-white'>Control panel</a></li>
+      <li><a href='/about' className='btn btn-accent my-1 '>About</a></li>
+      <li><a href='/controlpanel' className='btn btn-primary my-1 text-white'>Control panel</a></li>
+      <li><a href='/controlpanel' className='btn btn-accent my-1 '>Notifications</a></li>
       </ul>
     </div>
     <a className="btn btn-ghost normal-case text-xl" href='/'>liveSchool</a>
@@ -26,9 +27,10 @@ const Navbar = () => {
       <li><a href='/dashboard' className='btn btn-accent mx-2 '>Dashboard</a></li>
       <li><a href='/createCourse' className='btn btn-primary mx-2 text-white'>Create Course</a></li>
       
-      <li><a href='about' className='btn btn-accent mx-2 '>About</a></li>
-      <li><a href='controlpanel' className='btn btn-primary mx-2 text-white'>Control panel</a></li>
-      
+      <li><a href='/about' className='btn btn-accent mx-2 '>About</a></li>
+      <li><a href='/controlpanel' className='btn btn-primary mx-2 text-white'>Control panel</a></li>
+      <li><a href='/controlpanel' className='btn btn-accent mx-2 '>Notifications</a></li>
+     
     </ul>
   </div>
   <div className="navbar-end">

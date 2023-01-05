@@ -10,9 +10,9 @@ import DashboardCourse from '../components/DashboardCourse';
 
 
 
-const Home: NextPage = ({time} :any) => {
+const Home: NextPage = ({response} :any) => {
 
-  const [connected, setConnected] = useState(false)
+  const [connected, setConnected] = useState<any>(false)
   
 
 
@@ -58,8 +58,8 @@ const Home: NextPage = ({time} :any) => {
       </tr>
     </thead>
     <tbody>
-{time.map((x: any) => {
-  
+{response.map((x: any) => {
+  console.log({x})
   return(<DashboardCourse props={x}/>)
 })}
 </tbody>
@@ -87,10 +87,10 @@ export async function getServerSideProps() {
 	const res = await fetch('http://localhost:3000/api/getCourses');
     
 
-	const time = await res.json();
-  console.log(time)
+	const response = await res.json();
+  
 	// Pass the data to the page via props
-	return {props: {time}};
+	return {props: {response}};
 }
 
 export default Home;

@@ -13,16 +13,16 @@ import toast from 'react-hot-toast';
 
 
 const Home: NextPage = () => {
-  const [courseName, setCourseName] = useState("");
-  const [courseDescription, setCourseDescription] = useState("");
-  const [teacher, setTeacher] = useState("");
-  const [amount, setAmount] = useState("");
+  const [courseName, setCourseName] = useState<any>("");
+  const [courseDescription, setCourseDescription] = useState<any>("");
+  const [teacher, setTeacher] = useState<any>("");
+  const [amount, setAmount] = useState<any>("");
 
   const [{ storedDAGShards }, uploader] = useUploader()
-  const [file, setFile] = useState(null)
-  const [dataCid, setDataCid] = useState('')
-  const [status, setStatus] = useState('')
-  const [error, setError] = useState(null)
+  const [file, setFile] = useState<any>(null)
+  const [dataCid, setDataCid] = useState<any>('')
+  const [status, setStatus] = useState<any>('')
+  const [error, setError] = useState<any>(null)
 
   function onChangeCourse (e: any) {
     setCourseName(e.target.value)
@@ -118,7 +118,7 @@ const createCourse = async () => {
     
   return (
     
-    <div className='bg-slate-100'>
+    <div className='bg-slate-100 mt-5'>
       <Head>
         <title>RainbowKit App</title>
         <meta
@@ -171,12 +171,12 @@ const createCourse = async () => {
           <label className="label">
             <span className="label-text text-lg">Amount</span>
           </label>
-          <input type="text" placeholder="1-50" className="input input-bordered input-accent" onChange={onChangeAmount} />
+          <input type="text" placeholder="1 - 50" className="input input-bordered input-accent" onChange={onChangeAmount} />
         </div>
         {status == '' && 
         <form onSubmit={handleUploadSubmit}>
         <div className='db mb3'>
-        <label className="label"><span className="label-text text-lg">Pick a file for alumni NFT</span>
+        <label className="label"><span className="label-text text-lg">Pick a file for access pass NFT</span>
         </label>
           <input id='file' className='db pa2 w-100 ba br2 file-input file-input-bordered w-full max-w-xs' type='file' onChange={e => setFile(e.target.files[0])} required />
         </div>
@@ -212,7 +212,7 @@ const createCourse = async () => {
     <p><p className='font-bold'>Teacher:</p> {teacher}</p>
     <p><p className='font-bold'>Amount to mint:</p> {amount}</p>
     { dataCid != null &&
-    <a href={`ipfs://${dataCid}`} target='blank'><p className='font-bold'>Alumni badge:</p> {`https://w3s.link/ipfs/${dataCid}`}</a>}
+    <a href={`ipfs://${dataCid}`} target='blank'><p className='font-bold'>Access pass:</p> {`https://w3s.link/ipfs/${dataCid}`}</a>}
     
     <div className="form-control mt-5">
 

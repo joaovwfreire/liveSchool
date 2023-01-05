@@ -36,7 +36,7 @@ const Home: NextPage = () => {
           <div></div>
           <div></div>
         </div>
-<div className="card flex-shrink-0 w-full max-w-3xl shadow-2xl bg-base-100">
+<div className="card flex-shrink-0 w-full max-w-3xl shadow-2xl bg-base-100 mt-5">
       <div className="card-body">
         <div className='card-title'>About</div>
         <p>liveSchool is a dApp built for Encode's Next Video Build hackathon.</p>

@@ -43,7 +43,7 @@ a {
 
 .box div:nth-child(2){
   top: 70%;
-  left: 50%;
+  left: 85%;
   animation: animate 7s linear infinite;
 }
 
@@ -106,3 +106,85 @@ a {
     opacity: 0;
   }
 }
+
+.fade-in { animation: fadeIn 12s; }
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-o-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  .animated-paragraph {
+    border-right: solid 3px rgba(0,255,0,.75);
+    white-space: nowrap;
+    overflow: hidden;    
+
+  }
+
+  
+  .animated-paragraph2 {
+    border-right: solid 3px rgba(0,255,0,.75);
+    white-space: nowrap;
+    overflow: hidden;    
+
+  }
+
+  .animated-paragraph3 {
+    border-right: solid 3px rgba(0,255,0,.75);
+    white-space: nowrap;
+    overflow: hidden;    
+
+  }
+
+
+  
+  /* Animation */
+  .animated-paragraph {
+    animation: animated-text 1.5s steps(40,end) 3s 1 normal both,
+               animated-cursor 700ms steps(29,end) infinite;
+  }
+
+  .animated-paragraph2 {
+    animation: animated-text 1.5s steps(40,end) 4.5s 1 normal both,
+               animated-cursor 700ms steps(29,end) infinite;
+  }
+
+  .animated-paragraph3 {
+    animation: animated-text 1.5s steps(40,end) 6s 1 normal both,
+               animated-cursor 700ms steps(29,end) infinite;
+  }
+
+  
+  /* text animation */
+  
+  @keyframes animated-text{
+    from{width: 0;}
+    to{width: 100%;}
+  }
+  
+  /* cursor animations */
+  
+  @keyframes animated-cursor{
+    from{border-right-color: rgba(0,255,0,.75);}
+    to{border-right-color: transparent;}
+  }

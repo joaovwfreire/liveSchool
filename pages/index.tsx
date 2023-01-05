@@ -1,10 +1,8 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Navbar from '../components/Navbar';
-import Sidebar from '../components/Navbar';
-import styles from '../styles/Home.module.css';
-import BackgroundImage from "../styles/images/feliphe-schiarolli-hes6nUC1MVc-unsplash.jpg"
+import Link from 'next/link';
+
 
 const Home: NextPage = () => {
   return (
@@ -21,15 +19,34 @@ const Home: NextPage = () => {
 
       <main >
         
-        
+      <div className='box'>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div className='box2'>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
 
-        <div className="hero min-h-screen" style={{ backgroundImage: `url("https://images.unsplash.com/photo-1510531704581-5b2870972060?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80")` }}>
+        <div className="hero min-h-screen" style={{ backgroundImage: `url("https://images.unsplash.com/photo-1491895200222-0fc4a4c35e18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80")` }}>
   <div className="hero-overlay bg-opacity-60"></div>
   <div className="hero-content text-center text-neutral-content">
     <div className="max-w-md">
-      <h1 className="mb-5 text-7xl font-bold">Hello there</h1>
-      <p className="mb-5 text-2xl">Welcome to liveSchool. <br className='mb-2'/>A learning platform focused on user <br/> <b>data privacy</b>.</p>
-      <button className="btn btn-primary">Get Started</button>
+      <h1 className="mb-5 text-7xl font-bold fade-in">Hello there</h1>
+      <p className="mb-5 text-4xl">Welcome to liveSchool. <br className='mb-2'/>
+      <p className='animated-paragraph mt-5 text-2xl text-accent'>Live streams</p>
+      <p className='animated-paragraph2 text-2xl '>Educational content</p>
+      <p className='animated-paragraph3 text-2xl text-accent'><b>Decentralized</b> at a single place</p>
+      </p>
+      <Link href='/dashboard'><button className="btn btn-primary">Get Started<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
+<path fillRule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+</svg></button></Link>
     </div>
   </div>
 </div>

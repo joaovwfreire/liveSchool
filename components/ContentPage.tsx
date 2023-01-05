@@ -4,10 +4,10 @@ import { withIdentity } from '../components/Authenticator'
 
 export function ContentPage () {
     const [{ storedDAGShards }, uploader] = useUploader()
-    const [file, setFile] = useState(null)
-    const [dataCid, setDataCid] = useState('')
-    const [status, setStatus] = useState('')
-    const [error, setError] = useState(null)
+    const [file, setFile] = useState<any>(null)
+    const [dataCid, setDataCid] = useState<any>('')
+    const [status, setStatus] = useState<any>('')
+    const [error, setError] = useState<any>(null)
   
     if (!uploader) return null
   
@@ -36,7 +36,7 @@ export function ContentPage () {
     return (
       <form onSubmit={handleUploadSubmit}>
         <div className='db mb3'>
-        <label className="label"><span className="label-text text-lg">Pick a file for alumni NFT</span>
+        <label className="label"><span className="label-text text-lg">Pick a file for access pass NFT</span>
         </label>
           <input id='file' className='db pa2 w-100 ba br2 file-input file-input-bordered w-full max-w-xs' type='file' onChange={(e: any) => setFile(e.target.files[0])} required />
         </div>

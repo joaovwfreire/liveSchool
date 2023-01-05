@@ -12,7 +12,7 @@ export default async function handler(
   const course = req.body.course;
   const description = req.body.description;
   const teacher = req.body.teacher_wallet;
-  const startDate = req.body.start;
+  const link = req.body.link;
 
   const upsertDatabase = async () => {
     const client = await clientPromise;
@@ -27,9 +27,9 @@ export default async function handler(
     const upsertAction = await db
         .collection("classes")
         .updateOne(
-            {   name: className,  teacher: teacher, start: startDate },
-            {  // $set: { challengeId: 1, gameId: gameId, status: "started"},
-              $setOnInsert: { name: className, teacher: teacher, start: startDate, description: description }
+            {   name: className,  teacher: teacher, streamLink: link },
+            {  
+              $setOnInsert: { name: className, course: course, teacher: teacher, streamLink: link, description: description }
             },
             { upsert: true }
             );
@@ -37,7 +37,7 @@ export default async function handler(
     return ('Class created');
   }
 
-  if (req.method === "POST" && className && description && teacher && startDate) {
+  if (req.method === "POST" && className && description && teacher && link) {
     
     try {
 
