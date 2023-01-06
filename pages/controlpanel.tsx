@@ -83,11 +83,22 @@ export default Home;
 // Triggered on each request
 export async function getServerSideProps() {
 	// Fetching data from an API
+  if (process.env.DEV_ENV = 'true'){
 	const res = await fetch('http://localhost:3000/api/getCourses');
-    
+  
 
 	const response = await res.json();
   
 	// Pass the data to the page via props
-	return {props: {response}};
+	return {props: {response}};}
+  else{
+   
+      const res = await fetch('https://live-school.vercel.app/api/getCourses');
+      
+    
+      const response = await res.json();
+      
+      // Pass the data to the page via props
+      return {props: {response}};
+  }
 }
