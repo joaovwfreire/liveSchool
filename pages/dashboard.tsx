@@ -58,9 +58,9 @@ const Home: NextPage = ({response} :any) => {
       </tr>
     </thead>
     <tbody>
-{response.map((x: any) => {
+{response.map((x: any, i: number) => {
   console.log({x})
-  return(<DashboardCourse props={x}/>)
+  return(<DashboardCourse props={x} key={i}/>)
 })}
 </tbody>
 </table>

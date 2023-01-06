@@ -83,9 +83,9 @@ const Upload = (data: any) => {
     }
   
     const uploadVideo = async () => {
-      console.log(313)
+      
       toast.loading("Attempting to upload a new video.")
-      console.log(41)
+      
       await axios({
         method: 'post',
         url: '/api/uploadVideo',
@@ -97,12 +97,10 @@ const Upload = (data: any) => {
           video_link: `https://w3s.link/ipfs/${dataCid}`
         }
        }).then((response: any)=>{
-        console.log(12312)
         toast.success(`Video succesfully uploaded!`)
         
     
       }).catch((e: any) =>{
-        console.log(12412)
         toast.error(e)
       })
     }

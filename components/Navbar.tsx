@@ -1,4 +1,6 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import Link from 'next/link';
+import Image from 'next/image';
 import * as React from 'react';
 
 const Navbar = () => { 
@@ -10,26 +12,26 @@ const Navbar = () => {
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
       </label>
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-      <li><a href='/' className='btn btn-primary my-1 text-white'>Home</a></li>
-      <li><a href='/dashboard' className='btn btn-accent my-1 '>Dashboard</a></li>
-      <li><a href='/createCourse' className='btn btn-primary my-1 text-white'>Create Course</a></li>
+      <li><Link href='/' className='btn btn-primary my-1 text-white'>Home</Link></li>
+      <li><Link href='/dashboard' className='btn btn-accent my-1 '>Dashboard</Link></li>
+      <li><Link href='/createCourse' className='btn btn-primary my-1 text-white'>Create Course</Link></li>
       
-      <li><a href='/about' className='btn btn-accent my-1 '>About</a></li>
-      <li><a href='/controlpanel' className='btn btn-primary my-1 text-white'>Control panel</a></li>
-      <li><a href='/controlpanel' className='btn btn-accent my-1 '>Notifications</a></li>
+      <li><Link href='/about' className='btn btn-accent my-1 '>About</Link></li>
+      <li><Link href='/controlpanel' className='btn btn-primary my-1 text-white'>Control panel</Link></li>
+      <li><Link href='/controlpanel' className='btn btn-accent my-1 '>Notifications</Link></li>
       </ul>
     </div>
-    <a className="btn btn-ghost normal-case text-xl" href='/'>liveSchool</a>
+    <Link className="btn btn-ghost normal-case text-xl" href='/'>liveSchool</Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
-      <li><a href='/' className='btn btn-primary mx-2 text-white'>Home</a></li>
-      <li><a href='/dashboard' className='btn btn-accent mx-2 '>Dashboard</a></li>
-      <li><a href='/createCourse' className='btn btn-primary mx-2 text-white'>Create Course</a></li>
+      <li><Link href='/' className='btn btn-primary mx-2 text-white'>Home</Link></li>
+      <li><Link href='/dashboard' className='btn btn-accent mx-2 '>Dashboard</Link></li>
+      <li><Link href='/createCourse' className='btn btn-primary mx-2 text-white'>Create Course</Link></li>
       
-      <li><a href='/about' className='btn btn-accent mx-2 '>About</a></li>
-      <li><a href='/controlpanel' className='btn btn-primary mx-2 text-white'>Control panel</a></li>
-      <li><a href='/controlpanel' className='btn btn-accent mx-2 '>Notifications</a></li>
+      <li><Link href='/about' className='btn btn-accent mx-2 '>About</Link></li>
+      <li><Link href='/controlpanel' className='btn btn-primary mx-2 text-white'>Control panel</Link></li>
+      <li><Link href='/controlpanel' className='btn btn-accent mx-2 '>Notifications</Link></li>
      
     </ul>
   </div>

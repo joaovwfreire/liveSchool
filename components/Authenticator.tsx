@@ -101,6 +101,8 @@ export default function Authenticator ({ children }: any) {
 /**
  * Wrapping a component with this HoC ensures an identity exists.
  */
+Authenticator.displayName = 'Authenticator';
+
 export function withIdentity (Component: any) {
   return (props: any) => (
     <Authenticator>

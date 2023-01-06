@@ -7,6 +7,7 @@ import { toast } from 'react-hot-toast';
 import Upload from '../components/Upload';
 import { useAccount } from 'wagmi';
 import { Stream } from './Stream';
+import { TransferAsset } from './TransferAsset';
 
 interface ControlPanelComponent {
   name?: string;
@@ -114,7 +115,7 @@ return (
     </th>
     <th>
         
-    <label htmlFor={data.props.name} className="btn btn-accent btn-xs">send access pass <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
+    <label htmlFor={`modal${data.props.nftId}`} className="btn btn-accent btn-xs">send access pass <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
 <path fillRule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
 </svg></label>
   
@@ -151,6 +152,25 @@ return (
         connected && <div>
             
             <Stream props={dataToPass}/>
+ </div>
+      }
+ </div>
+      
+     </div>
+
+     <input type="checkbox" id={`modal${data.props.nftId}`} className="modal-toggle" />
+    <div className="modal">
+  <div className="modal-box relative self-center w-5/6">
+    <label htmlFor={`modal${data.props.nftId}`} className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    {
+        !connected && <div className=''><button onClick={connect} className='btn my-2 w-5/6'>Unlock content<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
+        <path fillRule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+        </svg></button> <div className="text-sm opacity-50"  >Lit access control will check possession of the digital asset of ID: {data.props.nftId}</div> </div>
+      }
+      {
+        connected && <div>
+            
+            <TransferAsset props={dataToPass}/>
  </div>
       }
  </div>

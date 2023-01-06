@@ -105,10 +105,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     // Default options for specific types
     success: {
       duration: 3000,
-      theme: {
-        primary: 'green',
-        secondary: 'black',
-      },
+      
     },
   }}
 />

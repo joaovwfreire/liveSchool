@@ -1,6 +1,7 @@
 import { randomInt } from "crypto";
 import type { NextApiRequest, NextApiResponse } from "next";
 import clientPromise from "../../server/mongo/middleware/mongodb";
+require ('dotenv').config()
 
 let uri = "";
 
@@ -42,7 +43,7 @@ export default async function handler(
         headers: {
           accept: 'application/json',
           'content-type': 'application/json',
-          Authorization: '84432712-3693-4aa2-99ac-aaa729f91982'
+          Authorization: process.env.NFT_PORT_KEY
         },
         body: JSON.stringify({name: course, description: description, file_url: url})
       };

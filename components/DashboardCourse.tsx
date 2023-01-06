@@ -166,9 +166,9 @@ return (
         
         {
           classesResponse && 
-          classesResponse.map((x:any) =>{
+          classesResponse.map((x:any, i: number) =>{
             return(
-              <div className=''>
+              <div className='' key={i}>
                 <hr/><hr/>
                 <p className='text-lg font-bold mt-3'>Course: {x.course}</p>
                 <p className='text-lg font-bold'>Title: {x.name}</p>
@@ -188,9 +188,9 @@ return (
       {
         
         videosResponse && 
-        videosResponse.map((x:any) =>{
+        videosResponse.map((x:any, i:number) =>{
           return(
-            <div className=''>
+            <div className='' key={i}>
               <hr/><hr/>
             <p className='text-lg font-bold mt-3'>Course: {x.course}</p>
             <p className='text-lg font-bold'>Title: {x.name}</p>

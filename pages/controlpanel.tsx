@@ -64,9 +64,9 @@ const Home: NextPage = ({response} :any) => {
       </tr>
     </thead>
     <tbody>
-{response.map((x: any) => {
+{response.map((x: any, i: number) => {
   if (x.teacher == address){
-  return(<ControlPanelCourse props={x}/>)
+  return(<ControlPanelCourse props={x} key={i}/>)
   }
 })}
 </tbody>

@@ -39,7 +39,7 @@ const Home: NextPage = () => {
 <div className="card flex-shrink-0 w-full max-w-3xl shadow-2xl bg-base-100 mt-5">
       <div className="card-body">
         <div className='card-title'>About</div>
-        <p>liveSchool is a dApp built for Encode's Next Video Build hackathon.</p>
+        <p>liveSchool is a dApp built for Encode Next Video Build hackathon.</p>
         <p>It enables content creators to easily set up gated-access to their live streams and uploaded videos. </p>
         <h3 className='font-bold'>Lit Access Control</h3>
         <p>By using Lit Access control, the most relevant data - video files and stream links access is selective. Only users that own an nft minted by
