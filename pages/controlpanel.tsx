@@ -1,4 +1,3 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
@@ -22,7 +21,6 @@ const Home: NextPage = ({response} :any) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
       <main className={styles.main}>
       <div className='box'>
           <div></div>

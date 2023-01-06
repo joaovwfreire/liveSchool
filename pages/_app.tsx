@@ -18,8 +18,9 @@ import { UploaderProvider } from '@w3ui/react-uploader'
 import { UUIDContext } from '../context'
 import { useRouter } from 'next/router'
 import { v4 as uuid } from 'uuid';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import Footer from '../components/Footer';
+import { HydrationProvider, Server, Client } from "react-hydration-provider";
 require ('dotenv').config()
 
 const id = uuid()
@@ -74,6 +75,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     router.push(`/protected?id=${id}`)
   }
   return (
+    <HydrationProvider>
     <LivepeerConfig client={livepeerClient}>
       <KeyringProvider>
       <UploaderProvider>
@@ -87,6 +89,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         <UUIDContext.Provider value={{
         id
       }}>
+        <Server>
+        <Navbar/>
+
+        </Server>
+        <Client>
+          
+          <Component {...pageProps}/>
+        </Client>
+
         <Toaster
   position="top-right"
   reverseOrder={false}
@@ -109,8 +120,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     },
   }}
 />
-        <Component {...pageProps}/>
+
         <Footer/>
+        
         </UUIDContext.Provider>
         </html>
       </RainbowKitProvider>
@@ -119,6 +131,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </UploaderProvider>
     </KeyringProvider>
     </LivepeerConfig>
+    </HydrationProvider>
   );
 }
 

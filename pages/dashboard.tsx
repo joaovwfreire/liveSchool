@@ -2,10 +2,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import LitJsSdk from 'lit-js-sdk';
-import Cookies from 'js-cookie'
-import { UUIDContext } from '../context'
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import DashboardCourse from '../components/DashboardCourse';  
 
 
@@ -27,7 +24,6 @@ const Home: NextPage = ({response} :any) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
       <main className={styles.main}>
       <div className='box'>
           <div></div>

@@ -1,10 +1,7 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import { ContentPage } from '../components/ContentPage';
 import { withIdentity } from '../components/Authenticator'
 import { useUploader } from '@w3ui/react-uploader'
 import axios from 'axios'
@@ -127,7 +124,6 @@ const createCourse = async () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
       <main className={styles.main}>
       <div className='box'>
           <div></div>

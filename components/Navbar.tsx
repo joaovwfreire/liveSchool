@@ -1,10 +1,11 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import Link from 'next/link';
-import Image from 'next/image';
+
 import * as React from 'react';
 
 const Navbar = () => { 
     return(
+      
         <div className="navbar bg-base-100 absolute">
   <div className="navbar-start">
     <div className="dropdown">
@@ -12,26 +13,26 @@ const Navbar = () => {
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
       </label>
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-      <li><Link href='/' className='btn btn-primary my-1 text-white'>Home</Link></li>
-      <li><Link href='/dashboard' className='btn btn-accent my-1 '>Dashboard</Link></li>
-      <li><Link href='/createCourse' className='btn btn-primary my-1 text-white'>Create Course</Link></li>
+      <li><Link href='/' ><button className='btn btn-primary my-1 text-white'>Home</button></Link></li>
+      <li><Link href='/dashboard' ><button className='btn btn-accent my-1 '>Dashboard</button></Link></li>
+      <li><Link href='/createCourse' ><button className='btn btn-primary my-1 text-white'>Create Course</button></Link></li>
       
-      <li><Link href='/about' className='btn btn-accent my-1 '>About</Link></li>
-      <li><Link href='/controlpanel' className='btn btn-primary my-1 text-white'>Control panel</Link></li>
-      <li><Link href='/controlpanel' className='btn btn-accent my-1 '>Notifications</Link></li>
+      <li><Link href='/about'><button className='btn btn-accent my-1 '>About</button></Link></li>
+      <li><Link href='/controlpanel'><button className='btn btn-primary my-1 text-white'>Control panel</button></Link></li>
+      <li><Link href='/controlpanel'><button className='btn btn-accent my-1 '>Notifications</button></Link></li>
       </ul>
     </div>
-    <Link className="btn btn-ghost normal-case text-xl" href='/'>liveSchool</Link>
+    <Link href='/'><button className="btn btn-ghost normal-case text-xl">liveSchool</button></Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
-      <li><Link href='/' className='btn btn-primary mx-2 text-white'>Home</Link></li>
-      <li><Link href='/dashboard' className='btn btn-accent mx-2 '>Dashboard</Link></li>
-      <li><Link href='/createCourse' className='btn btn-primary mx-2 text-white'>Create Course</Link></li>
+      <li><Link href='/'><button className='btn btn-primary mx-2 text-white'>Home</button></Link></li>
+      <li><Link href='/dashboard'><button className='btn btn-accent mx-2 '>Dashboard</button></Link></li>
+      <li><Link href='/createCourse'><button className='btn btn-primary mx-2 text-white'>Create Course</button></Link></li>
       
-      <li><Link href='/about' className='btn btn-accent mx-2 '>About</Link></li>
-      <li><Link href='/controlpanel' className='btn btn-primary mx-2 text-white'>Control panel</Link></li>
-      <li><Link href='/controlpanel' className='btn btn-accent mx-2 '>Notifications</Link></li>
+      <li><Link href='/about' ><button className='btn btn-accent  mx-2 '>About</button></Link></li>
+      <li><Link href='/controlpanel' ><button className='btn btn-primary mx-2 text-white'>Control panel</button></Link></li>
+      <li><Link href='/controlpanel' ><button className='btn btn-accent mx-2 '>Notifications</button></Link></li>
      
     </ul>
   </div>
