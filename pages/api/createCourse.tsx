@@ -76,13 +76,16 @@ export default async function handler(
           
           await fetch('https://api.nftport.xyz/v0/mints/customizable/batch', options)
             .then(response => { 
-                upsertDatabase();
-                res.status(200).json("Course creation succesfull! " + nextTokenId + " corresponds to this course's NFT id and can be seen at OpenSea." )
-                
+                console.log(response)
             })
             .catch(err => res.status(400).json(err));
             
-        
+            
+          try{  upsertDatabase();
+          }catch(e){
+            console.log(e)
+            res.status(400).json(e);
+          }
         res.status(200).json("Course creation succesfull! " + nextTokenId + " corresponds to this course's NFT id and can be seen at OpenSea." )
     } catch (e) {
 
