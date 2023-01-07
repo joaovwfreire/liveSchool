@@ -59,7 +59,7 @@ export default function DashboardCourse (data: any){
   async function connect() {
     toast.loading("Attempting to unlock the content.")
     const resourceId = {
-      baseUrl: 'http://localhost:3000',
+      baseUrl: 'process.env.BASE_DOMAIN',
       path: '/protected',
       orgId: "",
       role: "",
