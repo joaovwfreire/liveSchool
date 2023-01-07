@@ -51,7 +51,7 @@ const Home: NextPage = () => {
         </p>
         <h3 className='font-bold'>NFT Port</h3>
         <p>
-          NFT Port's apis were used to mint Digital Assets to a course creator's wallet address.
+          NFT Port apis were used to mint Digital Assets to a course creator wallet address.
           Upon a createCourse api call, the api calls NFT Port's batch minting endpoint in order to mint X amount of digital Assets 
           to the designated course teacher.
 
@@ -62,19 +62,19 @@ const Home: NextPage = () => {
         <p>
           XMTP is used to notify access pass holders of any relevant event at the courses being taken. The events notified at LiveSchool are:
           New livestreams and new video uploads.
-          One interesting view to have of XMTP's usage at this dApp is to portray it like a Web3 Twillio. It's apis are used for notification sending
+          One interesting view to have of XMTP's usage at this dApp is to portray it like a Web3 Twillio. Its apis are used for notification sending
           to specific addresses.
-          At the notification page, a user can check it's own messages plus the latest news on the courses enrolled.
+          At the notification page, a user can check its own messages plus the latest news on the courses enrolled.
         </p>
         <h3 className='font-bold'>Why Polygon?</h3>
         <p>
-          LiveSchool's purpose is to help teachers reach out to people wanting to learn
+          The purpose of liveSchool is to help teachers reach out to people wanting to learn
           at a much broader scale. 
           Low gas fees do mean there's a very small entry barrier.
           On top of that, many ground-breaking blockchain innovations are happening in Polygon, such as the Web3 Debt Card.
           One of the top2 biggest Solana Game-Fi projects is coming to the chain as well.
-          Combine those elements with Polygon scaling solutions and the reason for picking it as LiveSchool's primary chain is clear:
-          it's very likely that Polygon will be the chain of choice for most new users.
+          Combine those elements with Polygon scaling solutions and the reason for picking it as LiveSchools primary chain is clear:
+          it is very likely that Polygon will be the chain of choice for most new users.
         </p>
         <h3 className='font-bold'>Want to know more about this project?</h3>
         <p>
