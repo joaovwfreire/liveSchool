@@ -47,12 +47,11 @@ const Home: NextPage = () => {
            the video upload component and at the uploaded videos session for access pass owners. LivePeer also handles the livestreams logic:
            from generating the stream keys to providing links for the authenticated users to watch content.
 
-           ![Alt text](https://bafkreidx3i5aexgzj5uh4k6jcn5fcj2ph57sgjxcxei25egj5rzt5gxnqq.ipfs.w3s.link/ "LivePeer Playback")
-        </p>
+           </p>
         <h3 className='font-bold'>NFT Port</h3>
         <p>
           NFT Port apis were used to mint Digital Assets to a course creator wallet address.
-          Upon a createCourse api call, the api calls NFT Port's batch minting endpoint in order to mint X amount of digital Assets 
+          Upon a createCourse api call, the api calls NFT Ports batch minting endpoint in order to mint X amount of digital Assets 
           to the designated course teacher.
 
         </p>
@@ -62,7 +61,7 @@ const Home: NextPage = () => {
         <p>
           XMTP is used to notify access pass holders of any relevant event at the courses being taken. The events notified at LiveSchool are:
           New livestreams and new video uploads.
-          One interesting view to have of XMTP's usage at this dApp is to portray it like a Web3 Twillio. Its apis are used for notification sending
+          One interesting view to have of XMTPs usage at this dApp is to portray it like a Web3 Twillio. Its apis are used for notification sending
           to specific addresses.
           At the notification page, a user can check its own messages plus the latest news on the courses enrolled.
         </p>
@@ -70,7 +69,7 @@ const Home: NextPage = () => {
         <p>
           The purpose of liveSchool is to help teachers reach out to people wanting to learn
           at a much broader scale. 
-          Low gas fees do mean there's a very small entry barrier.
+          Low gas fees do mean theres a very small entry barrier.
           On top of that, many ground-breaking blockchain innovations are happening in Polygon, such as the Web3 Debt Card.
           One of the top2 biggest Solana Game-Fi projects is coming to the chain as well.
           Combine those elements with Polygon scaling solutions and the reason for picking it as LiveSchools primary chain is clear:
