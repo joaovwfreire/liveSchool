@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
 
@@ -9,6 +10,7 @@ const Home: NextPage = () => {
   
 
   return (
+    <div className='bg-slate-100'>
     <div className={styles.container}>
       <Head>
         <title>live School</title>
@@ -36,21 +38,53 @@ const Home: NextPage = () => {
         <p>liveSchool is a dApp built for Encode Next Video Build hackathon.</p>
         <p>It enables content creators to easily set up gated-access to their live streams and uploaded videos. </p>
         <h3 className='font-bold'>Lit Access Control</h3>
-        <p>By using Lit Access control, the most relevant data - video files and stream links access is selective. Only users that own an nft minted by
-          the content creator can view the content. </p>
+        <p>By using Lit Access control, relevant data  access is restricted. Only users that own an nft minted by
+          the content creator can view livestreams links and uploaded videos. At the control panel, in order to upload new videos, start 
+          live streams and tranfer access passes to the user, one must own one asset AND be the original teacher of the course.
+        </p>
         <h3 className='font-bold'>LivePeer</h3>
-        <p>Lorem ipsum</p>
+        <p>LivePeer is the bread and butter of this application, as it provides components for automatic video playback for previews at 
+           the video upload component and at the uploaded videos session for access pass owners. LivePeer also handles the livestreams logic:
+           from generating the stream keys to providing links for the authenticated users to watch content.
+
+           ![Alt text](https://bafkreidx3i5aexgzj5uh4k6jcn5fcj2ph57sgjxcxei25egj5rzt5gxnqq.ipfs.w3s.link/ "LivePeer Playback")
+        </p>
         <h3 className='font-bold'>NFT Port</h3>
-        <p>Lorem ipsum</p>
+        <p>
+          NFT Port's apis were used to mint Digital Assets to a course creator's wallet address.
+          Upon a createCourse api call, the api calls NFT Port's batch minting endpoint in order to mint X amount of digital Assets 
+          to the designated course teacher.
+
+        </p>
         <h3 className='font-bold'>W3 Storage</h3>
-        <p>Lorem ipsum</p>
+        <p>W3 storage was used to store Access Passes images and IPFS metadata alongisde video files. W3ui components handle all the file upload logic at this dApp. </p>
         <h3 className='font-bold'>XMTP</h3>
-        <p>Lorem ipsum</p>
+        <p>
+          XMTP is used to notify access pass holders of any relevant event at the courses being taken. The events notified at LiveSchool are:
+          New livestreams and new video uploads.
+          One interesting view to have of XMTP's usage at this dApp is to portray it like a Web3 Twillio. It's apis are used for notification sending
+          to specific addresses.
+          At the notification page, a user can check it's own messages plus the latest news on the courses enrolled.
+        </p>
         <h3 className='font-bold'>Why Polygon?</h3>
-        <p>Lorem ipsum</p>
+        <p>
+          LiveSchool's purpose is to help teachers reach out to people wanting to learn
+          at a much broader scale. 
+          Low gas fees do mean there's a very small entry barrier.
+          On top of that, many ground-breaking blockchain innovations are happening in Polygon, such as the Web3 Debt Card.
+          One of the top2 biggest Solana Game-Fi projects is coming to the chain as well.
+          Combine those elements with Polygon scaling solutions and the reason for picking it as LiveSchool's primary chain is clear:
+          it's very likely that Polygon will be the chain of choice for most new users.
+        </p>
+        <h3 className='font-bold'>Want to know more about this project?</h3>
+        <p>
+          Email me at jvwfreire@gmail.com
+        </p>
+        <Link href='https://www.linkedin.com/in/joaovwfreire/' passHref><a target="_blank">Send me a connection request at LinkedIn</a></Link>
     </div>
     </div>
     </main>
+    </div>
     </div>
   )
 };

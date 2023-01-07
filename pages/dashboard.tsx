@@ -9,10 +9,6 @@ import DashboardCourse from '../components/DashboardCourse';
 
 const Home: NextPage = ({response} :any) => {
 
-  const [connected, setConnected] = useState<any>(false)
-  
-
-
   return (
     
     <div className='bg-slate-100'>
