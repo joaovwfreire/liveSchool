@@ -98,13 +98,13 @@ const createCourse = async () => {
       url: `https://${dataCid}.ipfs.w3s.link/`
     }
    }).then((response: any)=>{
-    
-    toast.success(`Course succesfully created! You may now distribute the access passes to your students from the Control Panel.`)
+    console.log(response)
+    //toast.success(`Course succesfully created! You may now distribute the access passes to your students from the Control Panel.`)
     
 
   }).catch((e: any) =>{
-    
-    toast.error(e)
+    console.log(e)
+    //toast.error(e)
   })
 }
   

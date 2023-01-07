@@ -62,20 +62,20 @@ export default function ControlPanelCourse (data: any){
     const client = new LitJsSdk.LitNodeClient({ alertWhenUnauthorized: false })
     await client.connect()
     const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain: 'polygon' })
-
+console.log({authSig})
     await client.saveSigningCondition({ accessControlConditions, chain: 'polygon', authSig, resourceId })
     try {
       const jwt = await client.getSignedToken({
         accessControlConditions, chain: 'polygon', authSig, resourceId: resourceId
       })
-      
+      console.log(jwt)
       Cookies.set('lit-auth', jwt, { expires: 1 })
       setConnected(true)
       toast.success("Succesfully authenticated as " + address)
       toast.success("Please refresh the page, If you wish to connect to another course")
 
     } catch (err: any) {
-      
+      console.log(err)
       toast.error('error: '+ err.message)
     }
     
