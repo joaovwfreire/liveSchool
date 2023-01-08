@@ -19,7 +19,7 @@ const Navbar = () => {
       
       <li><Link href='/about'><button className='btn btn-accent my-1 '>About</button></Link></li>
       <li><Link href='/controlpanel'><button className='btn btn-primary my-1 text-white'>Control panel</button></Link></li>
-      <li><Link href='/controlpanel'><button className='btn btn-accent my-1 '>Notifications</button></Link></li>
+      <li><Link href='/notifications'><button className='btn btn-accent my-1 '>Notifications</button></Link></li>
       </ul>
     </div>
     <Link href='/'><button className="btn btn-ghost normal-case text-xl">liveSchool</button></Link>
@@ -32,7 +32,7 @@ const Navbar = () => {
       
       <li><Link href='/about' ><button className='btn btn-accent  mx-2 '>About</button></Link></li>
       <li><Link href='/controlpanel' ><button className='btn btn-primary mx-2 text-white'>Control panel</button></Link></li>
-      <li><Link href='/controlpanel' ><button className='btn btn-accent mx-2 '>Notifications</button></Link></li>
+      <li><Link href='/notifications' ><button className='btn btn-accent mx-2 '>Notifications</button></Link></li>
      
     </ul>
   </div>
