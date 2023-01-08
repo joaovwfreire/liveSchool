@@ -6,6 +6,9 @@ import {
     useUpdateStream,
   } from '@livepeer/react';   
 import Link from 'next/link';
+import axios from 'axios';
+import { useAccount } from 'wagmi';
+import { toast } from 'react-hot-toast';
   
   const streamName = `New Stream`;
   
@@ -14,6 +17,11 @@ import Link from 'next/link';
   const [courseDescription, setCourseDescription] = useState<any>("");
   const [teacher, setTeacher] = useState<any>("");
   const [amount, setAmount] = useState<any>("");
+  const { address } = useAccount({
+    onConnect({ address, isReconnected }) {
+      
+    },
+  });
 
     function onChangeCourse (e: any) {
       setCourseName(e.target.value)
@@ -28,6 +36,28 @@ import Link from 'next/link';
       setAmount(e.target.value)
     };
 
+    const sendNotification = async () =>{
+      toast.loading('Notifying users')
+      await axios({
+        method: 'post',
+        url: '/api/createClass',
+        data: {
+          course: data.props.props.name,
+          class_name: data.props.props.nftId,
+          description: courseDescription,
+          teacher_wallet: address,
+          link: `https://liveschool-player.vercel.app/player/${stream?.playbackId}`
+        }
+       }).then((response: any)=>{
+        //toast.success(response)
+       
+        toast.success('Succesfull')
+      }).catch((e: any) =>{
+        //toast.error(e)
+        
+        toast.error('Failed')
+      })
+    }
 
     const { mutate: createStream, data: createdStream } = useCreateStream(
       streamName ? { name: streamName } : null,
@@ -77,6 +107,9 @@ import Link from 'next/link';
         <button className='w-5/6 btn mt-5 mb-5' onClick={() => createStream?.()}>Create Stream<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
 </svg></button>
+<button className='w-5/6 btn mt-5 mb-5' onClick={sendNotification}>Notify<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-arrow-right-short" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+</svg></button>
         {stream && (
           <>
             <div className='bg-black mt-3'>
@@ -88,7 +121,7 @@ import Link from 'next/link';
             </div>
             
             <div className=' mt-3 flex'>
-            <p className=' mt-5 text-xl pb-2 px-3 font-bold'><Link href={`http://localhost:3001/player/${stream.playbackId}`} passHref><a target='_blank'><button className='btn btn-accent w-5/6'>Watch it live </button></a></Link></p>
+            <p className=' mt-5 text-xl pb-2 px-3 font-bold'><Link href={`https://liveschool-player.vercel.app/player/${stream.playbackId}`} passHref><a target='_blank'><button className='btn btn-accent w-5/6'>Watch it live </button></a></Link></p>
               
              <p className=' mt-5 text-xl pb-2 px-3 font-bold'><Link href='https://docs.livepeer.org/guides/developing/stream-via-obs' passHref className='text-xl pt-2 px-3'><a target='_blank'>
                 <button className='btn btn-primary w-5/6 '>How to setup your stream</button></a>

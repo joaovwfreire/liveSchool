@@ -2,7 +2,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import { useState } from 'react';
+import Link from 'next/link';
 import DashboardCourse from '../components/DashboardCourse';  
 
 
@@ -36,7 +36,9 @@ const Home: NextPage = ({response} :any) => {
           <div></div>
         </div>
         <div className="overflow-x-auto w-5/6 mt-5 place-content-center place-items-center">
-<h1 className='text-4xl text-bold'>User Dashboard</h1>
+<h1 className='text-4xl text-bold'>User Dashboard - please refer to the POC Page for full lit access control functionality</h1>
+<p>Tailwind CSS component covers Wallet signing logic on production.</p>
+<Link href='https://liveschool-poc.vercel.app/dashboard' passHref><a target="_blank">POC Dashboard</a></Link>
   <table className="table mt-5 w-full place-self-center">
    
     <thead >
@@ -51,7 +53,7 @@ const Home: NextPage = ({response} :any) => {
     </thead>
     <tbody>
 {response.map((x: any, i: number) => {
-  console.log({x})
+ 
   return(<DashboardCourse props={x} key={i}/>)
 })}
 </tbody>

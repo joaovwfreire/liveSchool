@@ -4,10 +4,11 @@ import { UUIDContext } from '../context'
 import LitJsSdk from 'lit-js-sdk';
 import Cookies from 'js-cookie'
 import { toast } from 'react-hot-toast';
-import Upload from '../components/Upload';
+import Upload from './Upload';
 import { useAccount } from 'wagmi';
 import { Stream } from './Stream';
 import { TransferAsset } from './TransferAsset';
+require('dotenv').config()
 
 interface ControlPanelComponent {
   name?: string;
@@ -52,7 +53,7 @@ export default function ControlPanelCourse (data: any){
   async function connect() {
     toast.loading("Attempting to unlock the content.")
     const resourceId = {
-      baseUrl: 'process.env.BASE_DOMAIN',
+      baseUrl: 'https://live-school.vercel.app',
       path: '/protected',
       orgId: "",
       role: "",
@@ -62,20 +63,20 @@ export default function ControlPanelCourse (data: any){
     const client = new LitJsSdk.LitNodeClient({ alertWhenUnauthorized: false })
     await client.connect()
     const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain: 'polygon' })
-console.log({authSig})
+
     await client.saveSigningCondition({ accessControlConditions, chain: 'polygon', authSig, resourceId })
     try {
       const jwt = await client.getSignedToken({
         accessControlConditions, chain: 'polygon', authSig, resourceId: resourceId
       })
-      console.log(jwt)
+     
       Cookies.set('lit-auth', jwt, { expires: 1 })
       setConnected(true)
       toast.success("Succesfully authenticated as " + address)
       toast.success("Please refresh the page, If you wish to connect to another course")
 
     } catch (err: any) {
-      console.log(err)
+      
       toast.error('error: '+ err.message)
     }
     

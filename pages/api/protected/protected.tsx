@@ -29,7 +29,7 @@ export async function getServerSideProps({ req, res, query }: any) {
   const { verified, payload } = LitJsSdk.verifyJwt({ jwt })
 
   if (
-    payload.baseUrl !== "process.env.BASE_DOMAIN"
+    payload.baseUrl !== "http://localhost:3000"
     || payload.path !== '/protected'
     || payload.extraData !== id
   ) {

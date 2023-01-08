@@ -147,5 +147,9 @@ to new tabs at another domain. That is a problem as we cannot really control the
         Embedding the second application at the page while making sure cross-origin requests are only enabled for this specific purpose.
         Running the second application at a subdomain and adding some server-side status management.
 
+Lit Access Control is not currently able to get the current connected wallet as TailWind CSS covers the modal. 
+I've addressed that by publishing a proof of concept version where users are able to test the dashboard and the control panel, but without css.
+
+
         
         

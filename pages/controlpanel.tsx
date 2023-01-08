@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import ControlPanelCourse from '../components/ControlPanelCourse';  
 import { useAccount } from 'wagmi';
@@ -47,7 +48,9 @@ const Home: NextPage = ({response} :any) => {
 </div>
 
 <div className="overflow-x-auto w-5/6  place-content-center place-items-center">
-<h1 className='text-4xl text-bold'>Control Panel</h1>
+<h1 className='text-4xl text-bold'>Control Panel - please refer to the POC Page for full lit access control functionality</h1>
+<p>Tailwind CSS component covers Wallet signing logic on production.</p>
+<Link href='https://liveschool-poc.vercel.app/controlpanel' passHref><a target="_blank">POC Control Panel</a></Link>
   <table className="table mt-5 w-full place-self-center">
    
     <thead >

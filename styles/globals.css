@@ -188,3 +188,8 @@ a {
     from{border-right-color: rgba(0,255,0,.75);}
     to{border-right-color: transparent;}
   }
+
+  .chat{
+    border-radius: 9px;
+    background-color: black;
+  }

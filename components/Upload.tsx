@@ -94,7 +94,7 @@ const Upload = (data: any) => {
           class_name: className,
           description: courseDescription,
           teacher_wallet: data.props.props.teacher,
-          video_link: `https://w3s.link/ipfs/${dataCid}`
+          video_link: `https://${dataCid}.ipfs.w3s.link/`
         }
        }).then((response: any)=>{
         toast.success(`Video succesfully uploaded!`)

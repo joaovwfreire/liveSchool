@@ -70,11 +70,11 @@ function useDebounce<T>(value: T, delay?: number): T {
             }
            }).then((response: any)=>{
             //toast.success(response)
-            console.log(response)
+            
         
           }).catch((e: any) =>{
             //toast.error(e)
-            console.log(e)
+            
           })
     }
 

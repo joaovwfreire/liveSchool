@@ -32,7 +32,7 @@ const Home: NextPage = () => {
           <div></div>
           <div></div>
         </div>
-
+        
         <div className="hero min-h-screen" style={{ backgroundImage: `url("https://images.unsplash.com/photo-1491895200222-0fc4a4c35e18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80")` }}>
   <div className="hero-overlay bg-opacity-60"></div>
   <div className="hero-content text-center text-neutral-content">

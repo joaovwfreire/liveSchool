@@ -8,6 +8,7 @@ import { toast } from 'react-hot-toast';
 import { useAccount } from 'wagmi';
 import { Player } from '@livepeer/react';
 import axios from 'axios';
+require('dotenv').config()
 
 interface DashboardComponent {  
   name?: string;
@@ -59,7 +60,7 @@ export default function DashboardCourse (data: any){
   async function connect() {
     toast.loading("Attempting to unlock the content.")
     const resourceId = {
-      baseUrl: 'process.env.BASE_DOMAIN',
+      baseUrl: 'https://live-school.vercel.app',
       path: '/protected',
       orgId: "",
       role: "",
@@ -168,7 +169,7 @@ return (
           classesResponse && 
           classesResponse.map((x:any, i: number) =>{
             return(
-              <div className='' key={i}>
+              <div key={i} className=''>
                 <hr/><hr/>
                 <p className='text-lg font-bold mt-3'>Course: {x.course}</p>
                 <p className='text-lg font-bold'>Title: {x.name}</p>
@@ -188,9 +189,9 @@ return (
       {
         
         videosResponse && 
-        videosResponse.map((x:any, i:number) =>{
+        videosResponse.map((x:any, i: number) =>{
           return(
-            <div className='' key={i}>
+            <div key={i} className=''>
               <hr/><hr/>
             <p className='text-lg font-bold mt-3'>Course: {x.course}</p>
             <p className='text-lg font-bold'>Title: {x.name}</p>
